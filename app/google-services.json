@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1004349894776",
+    "firebase_url": "https://react-testing-76a84-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "react-testing-76a84",
+    "storage_bucket": "react-testing-76a84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004349894776:android:863cc93aed67bbe3afbd8d",
+        "android_client_info": {
+          "package_name": "com.example.pet_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004349894776-81tuhdfnpncvottu7osrbm1qtt77453j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6-GdZUwGguRJEBQFtYG7ZkIxqBmZMNeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004349894776-81tuhdfnpncvottu7osrbm1qtt77453j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
