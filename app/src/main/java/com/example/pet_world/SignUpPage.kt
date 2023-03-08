@@ -40,13 +40,13 @@ class SignUpPage : AppCompatActivity() {
                     .isNotEmpty() && phone.text.toString().trim().isNotEmpty() && password.text.toString().trim().isNotEmpty()
             ) {
                 val email1=email.text.toString().trim()
-                val pass= password.text.toString()
+                val pass= password.text.toString().trim()
 
 
                     firebaseAuth.createUserWithEmailAndPassword(email1, pass)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
-                                val intent = Intent(this@SignUpPage, OTPVerifyActivity::class.java)
+                                val intent = Intent(this, OTPVerifyActivity::class.java)
                                 startActivity(intent)
                             }else{
                                 try {
