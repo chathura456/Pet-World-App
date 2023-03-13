@@ -8,7 +8,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
 class LoginPage: AppCompatActivity() {
 
@@ -32,7 +37,22 @@ class LoginPage: AppCompatActivity() {
                         startActivity(intent)
                     }
                     else{
-                        Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
+                        try {
+                            throw it.exception!!
+                        } catch (e: FirebaseAuthInvalidUserException) {
+                            Toast.makeText(
+                                this,
+                                "Email address is not registered",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } catch (e: FirebaseNetworkException) {
+                            Toast.makeText(this, "Fail to login! Network connection", Toast.LENGTH_SHORT)
+                                .show()
+                        } catch (e: FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
                     }
                 }
             else{

@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
@@ -72,6 +73,13 @@ class SignUpPage : AppCompatActivity() {
                                         .show()
                                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                                     Toast.makeText(this, "user already exist", Toast.LENGTH_SHORT)
+                                        .show()
+                                }catch (e: FirebaseNetworkException) {
+                                    Toast.makeText(
+                                        this,
+                                        "Failed! Network Issue",
+                                        Toast.LENGTH_SHORT
+                                    )
                                         .show()
                                 }
 
