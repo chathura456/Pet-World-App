@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpPage">
+    tools:context=".LoginPage">
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
@@ -21,15 +21,15 @@
             android:padding="30dp"
             android:text="Login"/>
         <EditText
-            android:id="@+id/et_user_name"
-            android:hint="User Name"
+            android:id="@+id/email"
+            android:hint="email"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/password"
             android:hint="Password"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa"
@@ -55,7 +55,19 @@
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/switchsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#6dffbf"
+            android:padding="30dp"
+            android:text="Don't have account? Sign Up"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

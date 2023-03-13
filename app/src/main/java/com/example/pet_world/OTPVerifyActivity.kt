@@ -12,6 +12,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import org.jetbrains.annotations.NotNull
 import java.util.concurrent.TimeUnit
 
 class OTPVerifyActivity : AppCompatActivity() {
@@ -19,11 +20,14 @@ class OTPVerifyActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private var storedVerificationId: String? =""
-    private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
-    lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
+    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
+    private lateinit  var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.otpverification_activity)
+
+        auth = FirebaseAuth.getInstance()
 
         val btn_getOTP = findViewById<Button>(R.id.btnGetOtp)
         val phone = findViewById<EditText>(R.id.phoneNumber)
@@ -45,6 +49,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
         btnVerify.setOnClickListener {
             if (otp.text.toString().trim().isNotEmpty()){
+                varifyPhoneNumberWithCode(storedVerificationId,phone.text.toString())
 
             }
             else{
@@ -59,40 +64,34 @@ class OTPVerifyActivity : AppCompatActivity() {
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                // This callback will be invoked in two situations:
-                // 1 - Instant verification. In some cases the phone number can be instantly
-                //     verified without needing to send or enter a verification code.
-                // 2 - Auto-retrieval. On some devices Google Play services can automatically
-                //     detect the incoming verification SMS and perform verification without
-                //     user action.
+
                 Log.d(TAG, "onVerificationCompleted:$credential")
                 signInWithPhoneAuthCredential(credential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                // This callback is invoked in an invalid request for verification is made,
-                // for instance if the the phone number format is not valid.
+
                 Log.w(TAG, "onVerificationFailed", e)
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
+
+
+
                 } else if (e is FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
+
                 }
 
-                // Show a message and update the UI
+
             }
 
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
-                // The SMS verification code has been sent to the provided phone number, we
-                // now need to ask the user to enter the code and then construct a credential
-                // by combining the code with a verification ID.
+
                 Log.d(TAG, "onCodeSent:$verificationId")
 
-                // Save verification ID and resending token so we can use them later
+                // Save verification ID
                 storedVerificationId = verificationId
                 resendToken = token
             }
@@ -105,17 +104,17 @@ class OTPVerifyActivity : AppCompatActivity() {
 
     override fun onStart(){
         super.onStart()
-        val currentUser=auth.currentUser
+        val currentUser = auth.currentUser
         //updateUI(currentUser)
     }
 
     private fun startPhoneVerification(phoneNumber: String) {
 
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
 
@@ -136,6 +135,8 @@ class OTPVerifyActivity : AppCompatActivity() {
                     Log.d(TAG, "signInWithCredential:success")
 
                     val user = task.result?.user
+                    Toast.makeText(this,"welcome "+user,Toast.LENGTH_SHORT).show()
+
                 } else {
                     // Sign in failed, display a message and update the UI
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -153,37 +154,5 @@ class OTPVerifyActivity : AppCompatActivity() {
     }
 
 
-    /*
-    private fun getOTPVerify() {
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phone.text.toString().trim())       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-                override fun onCodeSent(
-                    verificationId: String,
-                    forceResendingToken: PhoneAuthProvider.ForceResendingToken
-                ) {
-                    // Save the verification id somewhere
-                    // ...
-
-                    // The corresponding whitelisted code above should be used to complete sign-in.
-
-                }
-
-                override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                    // Sign in with the credential
-                    // ...
-                }
-
-                override fun onVerificationFailed(e: FirebaseException) {
-                    // ...
-                }
-            })
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-
-     */
 }

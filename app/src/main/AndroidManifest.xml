@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Pet_World"
         tools:targetApi="31">
         <activity
-            android:name=".SignUpPage"
+            android:name=".LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SignUpPage"></activity>
         <activity android:name=".OTPVerifyActivity"></activity>
     </application>
 

@@ -15,6 +15,10 @@ class SignUpPage : AppCompatActivity() {
 
     private  lateinit var firebaseAuth: FirebaseAuth
 
+
+    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
+    private lateinit  var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registration_activity)
@@ -28,6 +32,9 @@ class SignUpPage : AppCompatActivity() {
         val phone = findViewById<EditText>(R.id.phone)
         val password = findViewById<EditText>(R.id.password)
         val warning = findViewById<TextView>(R.id.txterror)
+        val repassword = findViewById<EditText>(R.id.repassword)
+        val switchlog=findViewById<TextView>(R.id.switchlogin)
+
 
 
 
@@ -37,41 +44,56 @@ class SignUpPage : AppCompatActivity() {
 
 
             if (username.text.toString().trim().isNotEmpty() && email.text.toString().trim()
-                    .isNotEmpty() && phone.text.toString().trim().isNotEmpty() && password.text.toString().trim().isNotEmpty()
+                    .isNotEmpty() && phone.text.toString().trim().isNotEmpty() && password.text.toString().trim().isNotEmpty() && repassword.text.toString().trim().isNotEmpty()
             ) {
                 val email1=email.text.toString().trim()
                 val pass= password.text.toString().trim()
+                val rpass=repassword.text.toString().trim()
+
+                if(pass==rpass) {
 
 
                     firebaseAuth.createUserWithEmailAndPassword(email1, pass)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
-                                val intent = Intent(this, OTPVerifyActivity::class.java)
+                                val intent = Intent(this, LoginPage::class.java)
                                 startActivity(intent)
-                            }else{
+                            } else {
                                 try {
                                     throw it.exception!!
-                                }catch ( e:FirebaseAuthWeakPasswordException ){
-                                    Toast.makeText(this,"password is not strong",Toast.LENGTH_SHORT).show()
-                                }catch (e:FirebaseAuthUserCollisionException){
-                                    Toast.makeText(this,"user already exist",Toast.LENGTH_SHORT).show()
-                                }catch (e:FirebaseAuthInvalidCredentialsException){
-                                    Toast.makeText(this,"user already exist",Toast.LENGTH_SHORT).show()
+                                } catch (e: FirebaseAuthWeakPasswordException) {
+                                    Toast.makeText(
+                                        this,
+                                        "password is not strong",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } catch (e: FirebaseAuthUserCollisionException) {
+                                    Toast.makeText(this, "user already exist", Toast.LENGTH_SHORT)
+                                        .show()
+                                } catch (e: FirebaseAuthInvalidCredentialsException) {
+                                    Toast.makeText(this, "user already exist", Toast.LENGTH_SHORT)
+                                        .show()
                                 }
-
 
 
                             }
                         }
 
 
-
+                }
+                else{
+                    Toast.makeText(this, "Re entered password is not correct", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                warning.text = "Input required"
+                Toast.makeText(this, "Inputs required", Toast.LENGTH_SHORT).show()
             }
         }
 
 
+        switchlog.setOnClickListener{
+            val intent= Intent(this,LoginPage::class.java)
+            startActivity(intent)
+        }
 
     }
 
