@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1034185918876",
+    "project_id": "pet-world-59628",
+    "storage_bucket": "pet-world-59628.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034185918876:android:032b1a6f48c4df81e56059",
+        "android_client_info": {
+          "package_name": "com.example.mychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034185918876-m34s245s6p04ns24g50440lhctpg3n6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhocuuGxN2UMpSYtFk-I9L991j1XJnZe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034185918876-m34s245s6p04ns24g50440lhctpg3n6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034185918876:android:8a5d62e239aec61de56059",
+        "android_client_info": {
+          "package_name": "com.example.pet_world"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034185918876-m34s245s6p04ns24g50440lhctpg3n6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhocuuGxN2UMpSYtFk-I9L991j1XJnZe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034185918876-m34s245s6p04ns24g50440lhctpg3n6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
