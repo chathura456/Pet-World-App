@@ -2,7 +2,6 @@ package com.example.pet_world
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.os.ProxyFileDescriptorCallback
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -12,12 +11,15 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import org.jetbrains.annotations.NotNull
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.concurrent.TimeUnit
+
 
 class OTPVerifyActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+private var phone:String?=""
 
     private var storedVerificationId: String? =""
 
@@ -29,16 +31,18 @@ class OTPVerifyActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+
+
         val btn_getOTP = findViewById<Button>(R.id.btnGetOtp)
-        val phone = findViewById<EditText>(R.id.phoneNumber)
+         phone = findViewById<EditText>(R.id.phoneNumber).toString()
         val btnVerify = findViewById<Button>(R.id.btnVerify)
         val otp= findViewById<EditText>(R.id.verification_code)
 
         FirebaseApp.initializeApp(this)
 
         btn_getOTP.setOnClickListener {
-            if (phone.text.toString().trim().isNotEmpty()){
-                startPhoneVerification(phone.text.toString())
+            if (phone.toString().trim().isNotEmpty()){
+                startPhoneVerification(phone.toString())
 
             }
             else{
@@ -50,6 +54,7 @@ class OTPVerifyActivity : AppCompatActivity() {
         btnVerify.setOnClickListener {
             if (otp.text.toString().trim().isNotEmpty()){
                 varifyPhoneNumberWithCode(storedVerificationId,otp.text.toString().trim())
+
 
             }
             else{
@@ -67,6 +72,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
                 Log.d(TAG, "onVerificationCompleted:$credential")
                 signInWithPhoneAuthCredential(credential)
+
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -130,6 +136,7 @@ class OTPVerifyActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    createUser(phone.toString())
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
 
@@ -150,6 +157,29 @@ class OTPVerifyActivity : AppCompatActivity() {
             }
     }
 
+
+
+
+    private fun createUser(phone: String) {
+        val db = Firebase.firestore
+        val uname = intent.getStringExtra("Username")
+        val email = intent.getStringExtra("email")
+        val user: MutableMap<String, Any> = HashMap()
+        user.put("email", email.toString())
+        user.put("phone",phone )
+        user.put("username",uname.toString())
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(
+                    TAG,
+                    "DocumentSnapshot added with ID: " + documentReference.id
+                )
+            }
+            .addOnFailureListener { e -> Log.w(TAG, "Error adding document", e) }
+
+    }
 
     private fun updateUI(user: FirebaseUser?=auth.currentUser){
         //stratActivity(Intent(this, ActiviyName::class.java))
