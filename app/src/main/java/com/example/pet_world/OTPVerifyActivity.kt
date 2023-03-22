@@ -49,7 +49,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
         btnVerify.setOnClickListener {
             if (otp.text.toString().trim().isNotEmpty()){
-                varifyPhoneNumberWithCode(storedVerificationId,phone.text.toString())
+                varifyPhoneNumberWithCode(storedVerificationId,otp.text.toString().trim())
 
             }
             else{
@@ -74,7 +74,6 @@ class OTPVerifyActivity : AppCompatActivity() {
                 Log.w(TAG, "onVerificationFailed", e)
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
-
 
 
                 } else if (e is FirebaseTooManyRequestsException) {
@@ -138,10 +137,13 @@ class OTPVerifyActivity : AppCompatActivity() {
                     Toast.makeText(this,"welcome "+user,Toast.LENGTH_SHORT).show()
 
                 } else {
+                    Toast.makeText(this,"Verification on failed ",Toast.LENGTH_SHORT).show()
                     // Sign in failed, display a message and update the UI
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
+                        Toast.makeText(this,"Verification failed invalid user ",Toast.LENGTH_SHORT).show()
+
                     }
                     // Update UI
                 }

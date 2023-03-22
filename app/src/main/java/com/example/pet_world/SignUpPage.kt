@@ -43,10 +43,12 @@ class SignUpPage : AppCompatActivity() {
         btn_submit.setOnClickListener {
 
 
+            //validate user inputs
 
             if (username.text.toString().trim().isNotEmpty() && email.text.toString().trim()
                     .isNotEmpty() && phone.text.toString().trim().isNotEmpty() && password.text.toString().trim().isNotEmpty() && repassword.text.toString().trim().isNotEmpty()
             ) {
+                val uname=username.text.toString().trim()
                 val email1=email.text.toString().trim()
                 val pass= password.text.toString().trim()
                 val rpass=repassword.text.toString().trim()
@@ -57,8 +59,16 @@ class SignUpPage : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email1, pass)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
-                                val intent = Intent(this, LoginPage::class.java)
-                                startActivity(intent)
+
+                                //switch to phone number verification activity
+                                val intent = Intent(this, OTPVerifyActivity::class.java)
+                                    intent.putExtra("email", email1)
+                                    intent.putExtra("username",uname)
+                                    startActivity(intent)
+
+
+
+                                //validating user inputs passing feedbacks
                             } else {
                                 try {
                                     throw it.exception!!
