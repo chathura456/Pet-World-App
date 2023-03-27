@@ -63,7 +63,7 @@ class SignUpPage : AppCompatActivity() {
                                 //switch to phone number verification activity
                                 val intent = Intent(this, OTPVerifyActivity::class.java)
                                     intent.putExtra("email", email1)
-                                    intent.putExtra("username",uname)
+                                    intent.putExtra("uname",uname)
                                     startActivity(intent)
 
 

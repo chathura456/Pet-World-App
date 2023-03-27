@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class OTPVerifyActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-private var phone:String?=""
+    private lateinit var phone1:String
 
     private var storedVerificationId: String? =""
 
@@ -34,15 +34,16 @@ private var phone:String?=""
 
 
         val btn_getOTP = findViewById<Button>(R.id.btnGetOtp)
-         phone = findViewById<EditText>(R.id.phoneNumber).toString()
+        val phone = findViewById<EditText>(R.id.phoneNumber)
         val btnVerify = findViewById<Button>(R.id.btnVerify)
         val otp= findViewById<EditText>(R.id.verification_code)
 
+        phone1=phone.text.toString()
         FirebaseApp.initializeApp(this)
 
         btn_getOTP.setOnClickListener {
-            if (phone.toString().trim().isNotEmpty()){
-                startPhoneVerification(phone.toString())
+            if (phone.text.toString().trim().isNotEmpty()){
+                startPhoneVerification(phone.text.toString())
 
             }
             else{
@@ -136,7 +137,7 @@ private var phone:String?=""
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    createUser(phone.toString())
+                    createUser(phone1.toString())
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
 
@@ -162,7 +163,7 @@ private var phone:String?=""
 
     private fun createUser(phone: String) {
         val db = Firebase.firestore
-        val uname = intent.getStringExtra("Username")
+        val uname = intent.getStringExtra("uname")
         val email = intent.getStringExtra("email")
         val user: MutableMap<String, Any> = HashMap()
         user.put("email", email.toString())

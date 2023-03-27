@@ -1,3 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Pet World</string>
+    <string name="app_name">petapp</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_back">Back</string>
+    <string name="lbl_def">DEF</string>
+    <string name="msg_by_providing_my2">By providing my phone number, I herby agree and accept the </string>
+    <string name="lbl_phone_no">Phone No</string>
+    <string name="lbl_or_login_with">Or, Login With</string>
+    <string name="msg_already_have_an">Already have an account? </string>
+    <string name="lbl_mno">MNO</string>
+    <string name="lbl_verify">VERIFY</string>
+    <string name="msg_enter_your_otp">Enter your OTP code here</string>
+    <string name="lbl_abc">ABC</string>
+    <string name="lbl_94">+94</string>
+    <string name="lbl_781526089">781526089</string>
+    <string name="lbl_sign_up">Sign up</string>
+    <string name="lbl_start_now">START NOW</string>
+    <string name="msg_didn_t_you_rece">Didn\u2019t you receive any code ?
+
+RESEND NEW CODE</string>
+    <string name="lbl_resend_new_code">RESEND NEW CODE</string>
+    <string name="lbl_and"> and </string>
+    <string name="lbl_privacy_policy">Privacy Policy</string>
+    <string name="lbl_register"> Register</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_pqrs">PQRS</string>
+    <string name="lbl_jkl">JKL</string>
+    <string name="msg_by_providing_my">By providing my phone number, I herby agree and accept the Terms of Services and Privacy Policy in use this app.</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_reset">Reset</string>
+    <string name="lbl_0">0</string>
+    <string name="lbl_1">1</string>
+    <string name="lbl_2">2</string>
+    <string name="lbl_3">3</string>
+    <string name="msg_didn_t_you_rece2">Didn\u2019t you receive any code ?
+
+</string>
+    <string name="lbl_4">4</string>
+    <string name="lbl_5">5</string>
+    <string name="msg_verify_your_pho">Verify Your
+Phone Number</string>
+    <string name="lbl_6">6</string>
+    <string name="lbl_7">7</string>
+    <string name="lbl_8">8</string>
+    <string name="lbl_9">9</string>
+    <string name="msg_phone_verificat">Phone Verification</string>
+    <string name="lbl_pet_world">Pet World</string>
+    <string name="lbl_login">Login</string>
+    <string name="msg_re_enter_passw">Re- enter password</string>
+    <string name="msg_in_use_this_app"> in use this app.</string>
+    <string name="msg_already_have_an2">Already have an account?</string>
+    <string name="msg_forgot_your_pas">FORGOT YOUR PASSWORD?</string>
+    <string name="msg_new_to_pet_worl">New To Pet World?</string>
+    <string name="lbl_welcome">Welcome
+</string>
+    <string name="lbl_send_otp">SEND OTP</string>
+    <string name="msg_welcome_to_pet">Welcome To
+Pet World</string>
+    <string name="lbl_ghi">GHI</string>
+    <string name="lbl_welcome_back">Welcome
+Back</string>
+    <string name="msg_terms_of_servic">Terms of Services</string>
+    <string name="lbl_password">Password</string>
+    <string name="lbl_signup2">Signup</string>
+    <string name="lbl_welcome_to">Welcome To
+</string>
+    <string name="msg_add_your_phone">Add your phone number.We\u2019ll send you a verification code. </string>
+    <string name="lbl_wxyz">WXYZ</string>
+    <string name="lbl_tuv">TUV</string>
 </resources>
