@@ -2,10 +2,7 @@ package com.example.pet_world
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
@@ -32,9 +29,8 @@ class SignUpPage : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.email)
         val phone = findViewById<EditText>(R.id.phone)
         val password = findViewById<EditText>(R.id.password)
-        val warning = findViewById<TextView>(R.id.txterror)
         val repassword = findViewById<EditText>(R.id.repassword)
-        val switchlog=findViewById<TextView>(R.id.switchlogin)
+        val switchlog=findViewById<LinearLayout>(R.id.switchlogin)
 
 
 
@@ -79,16 +75,16 @@ class SignUpPage : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 } catch (e: FirebaseAuthUserCollisionException) {
-                                    Toast.makeText(this, "user already exist", Toast.LENGTH_SHORT)
+                                    Toast.makeText(this, "user already exist", Toast.LENGTH_LONG)
                                         .show()
                                 } catch (e: FirebaseAuthInvalidCredentialsException) {
-                                    Toast.makeText(this, "user already exist", Toast.LENGTH_SHORT)
+                                    Toast.makeText(this, "user already exist", Toast.LENGTH_LONG)
                                         .show()
                                 }catch (e: FirebaseNetworkException) {
                                     Toast.makeText(
                                         this,
                                         "Failed! Network Issue",
-                                        Toast.LENGTH_SHORT
+                                        Toast.LENGTH_LONG
                                     )
                                         .show()
                                 }
@@ -100,10 +96,10 @@ class SignUpPage : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this, "Re entered password is not correct", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Re entered password is not correct", Toast.LENGTH_LONG).show()
                 }
             } else {
-                Toast.makeText(this, "Inputs required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Inputs required", Toast.LENGTH_LONG).show()
             }
         }
 
