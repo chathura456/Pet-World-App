@@ -1,6 +1,7 @@
 package com.example.pet_world
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit
 class OTPVerifyActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var phone1:String
+    private var phone1:String? =""
 
     private var storedVerificationId: String? =""
 
@@ -35,15 +36,17 @@ class OTPVerifyActivity : AppCompatActivity() {
 
         val btn_getOTP = findViewById<Button>(R.id.btnGetOtp)
         val phone = findViewById<EditText>(R.id.phoneNumber)
-        val btnVerify = findViewById<Button>(R.id.btnVerify)
-        val otp= findViewById<EditText>(R.id.verification_code)
 
-        phone1=phone.text.toString()
+
+        phone1=phone.text.toString().trim()
         FirebaseApp.initializeApp(this)
 
         btn_getOTP.setOnClickListener {
             if (phone.text.toString().trim().isNotEmpty()){
                 startPhoneVerification(phone.text.toString())
+                val intent = Intent(this, OTPcreateActivity::class.java)
+                intent.putExtra("verificationId", storedVerificationId)
+                startActivity(intent)
 
             }
             else{
@@ -52,17 +55,7 @@ class OTPVerifyActivity : AppCompatActivity() {
         }
 
 
-        btnVerify.setOnClickListener {
-            if (otp.text.toString().trim().isNotEmpty()){
-                varifyPhoneNumberWithCode(storedVerificationId,otp.text.toString().trim())
 
-
-            }
-            else{
-                Toast.makeText(this,"OTP verification is required", Toast.LENGTH_SHORT).show()
-
-            }
-        }
 
 
 
@@ -114,7 +107,7 @@ class OTPVerifyActivity : AppCompatActivity() {
         //updateUI(currentUser)
     }
 
-    private fun startPhoneVerification(phoneNumber: String) {
+    public fun startPhoneVerification(phoneNumber: String) {
 
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phoneNumber)
@@ -127,13 +120,13 @@ class OTPVerifyActivity : AppCompatActivity() {
 
     }
 
-    private fun varifyPhoneNumberWithCode(verificationId:String?, code:String){
+     fun varifyPhoneNumberWithCode(verificationId:String?, code:String){
         val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
         signInWithPhoneAuthCredential(credential)
 
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+     fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -161,7 +154,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
 
 
-    private fun createUser(phone: String) {
+     fun createUser(phone: String) {
         val db = Firebase.firestore
         val uname = intent.getStringExtra("uname")
         val email = intent.getStringExtra("email")
@@ -182,7 +175,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
     }
 
-    private fun updateUI(user: FirebaseUser?=auth.currentUser){
+     fun updateUI(user: FirebaseUser?=auth.currentUser){
         //stratActivity(Intent(this, ActiviyName::class.java))
     }
 

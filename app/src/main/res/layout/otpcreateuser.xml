@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".OTPcreateActivity">
+
+    <FrameLayout android:id="@+id/frameStackicons8dogpawTwo"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" style="@style/groupStylecyan_700">
+        <LinearLayout android:id="@+id/linearColumnicons8dogpawOne"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylecyan_700">
+            <FrameLayout android:id="@+id/frameStackicons8dogpaw"
+                android:layout_height="@dimen/_698pxv" android:layout_width="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linearColumnarrowleft"
+                    style="@style/groupStylewhite_A700cornerRadius"
+                    android:layout_width="match_parent"
+                    android:layout_height="576dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbarToolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:gravity="end"
+                        app:contentInsetStart="0dp">
+
+                        <LinearLayout
+                            android:id="@+id/linearRowarrowleft"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <FrameLayout
+                                android:id="@+id/frameStackarrowleft"
+                                style="@style/groupStylebluegray_100_72cornerRadius"
+                                android:layout_width="@dimen/_39pxh"
+                                android:layout_height="@dimen/_33pxv"
+                                android:layout_marginTop="@dimen/_23pxv"
+                                android:layout_marginBottom="@dimen/_2pxv">
+
+                                <ImageView
+                                    android:id="@+id/imageArrowleft"
+                                    android:layout_width="@dimen/_13pxh"
+                                    android:layout_height="@dimen/_18pxh"
+                                    android:layout_gravity="top|start"
+                                    android:layout_marginStart="@dimen/_12pxh"
+                                    android:layout_marginTop="@dimen/_6pxv"
+                                    android:layout_marginEnd="@dimen/_12pxh"
+                                    android:layout_marginBottom="@dimen/_10pxv"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_arrowleft"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_arrowleft" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/imageIcons8dogpaw"
+                                android:src="@drawable/img_icons8dogpaw_58x63"
+                                android:layout_width="@dimen/_63pxh"
+                                android:layout_height="@dimen/_58pxh"
+                                android:layout_marginStart="@dimen/_235pxh"
+                                android:scaleType="fitXY"
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/img_icons8dogpaw_58x63" />
+                        </LinearLayout>
+                    </androidx.appcompat.widget.Toolbar>
+
+                    <TextView
+                        android:id="@+id/txtPhoneVerificat"
+                        style="@style/txtInterblack30"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_35pxh"
+                        android:layout_marginTop="@dimen/_34pxv"
+                        android:layout_marginEnd="@dimen/_35pxh"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/msg_phone_verificat"
+                        tools:text="@string/msg_phone_verificat" />
+
+                    <TextView
+                        android:id="@+id/txtEnteryourOTP"
+                        style="@style/txtInterregular15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_38pxh"
+                        android:layout_marginTop="@dimen/_25pxv"
+                        android:layout_marginEnd="@dimen/_38pxh"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/msg_enter_your_otp"
+                        tools:text="@string/msg_enter_your_otp" />
+
+                    <LinearLayout android:gravity="center_vertical"
+                        android:id="@+id/linearRowicons8phonethirty"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_25pxv"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal" style="@style/groupStylebluegray_100_51cornerRadius">
+                        <ImageView android:id="@+id/imageIcons8phoneThirty"
+                            android:layout_height="@dimen/_22pxh"
+                            android:layout_marginBottom="@dimen/_11pxv"
+                            android:layout_marginStart="@dimen/_19pxh"
+                            android:layout_marginTop="@dimen/_12pxv"
+                            android:layout_width="@dimen/_26pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_icons8phone30"
+                            />
+                        <EditText
+                            android:id="@+id/otp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_marginStart="@dimen/_25pxh"
+                            android:layout_marginTop="@dimen/_12pxv"
+                            android:layout_marginEnd="@dimen/_150pxh"
+                            android:layout_marginBottom="@dimen/_10pxv"
+                            android:layout_weight="1.75"
+                            android:ellipsize="end"
+                            android:hint="OTP Code"
+                            android:background="@null"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnVerify"
+                        style="@style/btnSolidRounded_1"
+                        android:layout_width="@dimen/_301pxh"
+                        android:layout_height="@dimen/_37pxv"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_34pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_30pxh"
+                        android:paddingTop="@dimen/_9pxv"
+                        android:paddingEnd="@dimen/_30pxh"
+                        android:paddingBottom="@dimen/_9pxv"
+                        android:singleLine="true"
+                        android:text="@string/lbl_verify"
+                        android:textAllCaps="false"
+                        tools:text="@string/lbl_verify" />
+
+                    <TextView
+                        android:id="@+id/txtDidntyourece"
+                        style="@style/txtInterregular12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_26pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginBottom="@dimen/_219pxv"
+                        android:text="@string/msg_didn_t_you_rece"
+                        tools:text="@string/msg_didn_t_you_rece" />
+                </LinearLayout>
+            </FrameLayout>
+            <ImageView android:id="@+id/imageIcons8dogpawTwo"
+                android:layout_gravity="end"
+                android:layout_height="@dimen/_45pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_width="@dimen/_43pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_icons8dogpaw_3"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_icons8dogpaw_3"/>
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowicons8dogpawThree"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_width="match_parent" android:orientation="horizontal">
+                <ImageView android:id="@+id/imageIcons8dogpawThree"
+                    android:layout_height="@dimen/_47pxh"
+                    android:layout_marginBottom="@dimen/_22pxv"
+                    android:layout_marginTop="@dimen/_21pxv"
+                    android:layout_width="@dimen/_43pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_icons8dogpaw_4"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_icons8dogpaw_4"/>
+                <ImageView android:id="@+id/imageIcons8dogpawFour"
+                    android:layout_height="@dimen/_91pxh"
+                    android:layout_marginStart="@dimen/_149pxh"
+                    android:layout_width="@dimen/_90pxh"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_icons8dogpaw_91x90}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_icons8dogpaw_91x90"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
