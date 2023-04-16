@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class OTPcreateActivity : AppCompatActivity() {
 
@@ -73,6 +75,29 @@ class OTPcreateActivity : AppCompatActivity() {
                     // Update UI
                 }
             }
+    }
+
+
+    fun createUser() {
+        val db = Firebase.firestore
+        val uname = intent.getStringExtra("uname")
+        val email = intent.getStringExtra("email")
+        val phone=intent.getStringExtra("phone")
+        val user: MutableMap<String, Any> = HashMap()
+        user.put("email", email.toString())
+        user.put("phone",phone.toString() )
+        user.put("username",uname.toString())
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(
+                    ContentValues.TAG,
+                    "DocumentSnapshot added with ID: " + documentReference.id
+                )
+            }
+            .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error adding document", e) }
+
     }
 
 

@@ -92,7 +92,7 @@ class OTPVerifyActivity : AppCompatActivity() {
                 storedVerificationId = verificationId
                 resendToken = token
                 Log.d(TAG,"verification:$storedVerificationId")
-                switch(verificationId)
+                switch(verificationId,phone.text.toString())
 
             }
 
@@ -105,10 +105,11 @@ class OTPVerifyActivity : AppCompatActivity() {
     }
 
 
-    fun switch(verificationId: String) {
+    fun switch(verificationId: String, phone: String) {
 
         val intent = Intent(this, OTPcreateActivity::class.java)
         intent.putExtra("verificationId", verificationId)
+        intent.putExtra("phone", phone)
         startActivity(intent)
         Log.d(TAG,"verification:$verificationId")
 
