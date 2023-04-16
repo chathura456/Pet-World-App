@@ -44,9 +44,6 @@ class OTPVerifyActivity : AppCompatActivity() {
         btn_getOTP.setOnClickListener {
             if (phone.text.toString().trim().isNotEmpty()){
                 startPhoneVerification(phone.text.toString())
-                val intent = Intent(this, OTPcreateActivity::class.java)
-                intent.putExtra("verificationId", storedVerificationId)
-                startActivity(intent)
 
             }
             else{
@@ -66,6 +63,7 @@ class OTPVerifyActivity : AppCompatActivity() {
 
                 Log.d(TAG, "onVerificationCompleted:$credential")
                 signInWithPhoneAuthCredential(credential)
+
 
             }
 
@@ -93,13 +91,29 @@ class OTPVerifyActivity : AppCompatActivity() {
                 // Save verification ID
                 storedVerificationId = verificationId
                 resendToken = token
+                Log.d(TAG,"verification:$storedVerificationId")
+                switch(verificationId)
+
             }
+
+
         }
 
 
 
 
     }
+
+
+    fun switch(verificationId: String) {
+
+        val intent = Intent(this, OTPcreateActivity::class.java)
+        intent.putExtra("verificationId", verificationId)
+        startActivity(intent)
+        Log.d(TAG,"verification:$verificationId")
+
+    }
+
 
     override fun onStart(){
         super.onStart()
