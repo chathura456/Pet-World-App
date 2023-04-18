@@ -106,10 +106,13 @@ class OTPVerifyActivity : AppCompatActivity() {
 
 
     fun switch(verificationId: String, phone: String) {
-
+        val uname = intent.getStringExtra("uname")
+        val email = intent.getStringExtra("email")
         val intent = Intent(this, OTPcreateActivity::class.java)
         intent.putExtra("verificationId", verificationId)
         intent.putExtra("phone", phone)
+        intent.putExtra("email", email)
+        intent.putExtra("uname",uname)
         startActivity(intent)
         Log.d(TAG,"verification:$verificationId")
 

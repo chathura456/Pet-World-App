@@ -1,6 +1,7 @@
 package com.example.pet_world
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,7 @@ class OTPcreateActivity : AppCompatActivity() {
                 varifyPhoneNumberWithCode(storedVerificationId,otp.text.toString().trim())
 
 
+
             }
             else{
                 Toast.makeText(this,"OTP verification is required", Toast.LENGTH_SHORT).show()
@@ -57,8 +59,11 @@ class OTPcreateActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
+                    createUser()
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(ContentValues.TAG, "signInWithCredential:success")
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
 
                     val user = task.result?.user
                     Toast.makeText(this,"welcome "+user,Toast.LENGTH_SHORT).show()
