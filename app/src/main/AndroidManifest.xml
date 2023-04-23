@@ -23,6 +23,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpPage"></activity>
         <activity android:name=".OTPVerifyActivity"></activity>
+        <activity android:name=".OTPcreateActivity"></activity>
     </application>
 
 </manifest>

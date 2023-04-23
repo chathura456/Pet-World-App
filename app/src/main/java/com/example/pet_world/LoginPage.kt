@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -25,7 +26,7 @@ class LoginPage: AppCompatActivity() {
         val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
         val btnsubmit=findViewById<Button>(R.id.btn_submit)
-        val signupbtn=findViewById<TextView>(R.id.switchsignup)
+        val signupbtn=findViewById<LinearLayout>(R.id.switchsignup)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -43,20 +44,20 @@ class LoginPage: AppCompatActivity() {
                             Toast.makeText(
                                 this,
                                 "Email address is not registered",
-                                Toast.LENGTH_SHORT
+                                Toast.LENGTH_LONG
                             ).show()
                         } catch (e: FirebaseNetworkException) {
-                            Toast.makeText(this, "Fail to login! Network connection", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "Fail to login! Network connection", Toast.LENGTH_LONG)
                                 .show()
                         } catch (e: FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_LONG)
                                 .show()
                         }
 
                     }
                 }
             else{
-                Toast.makeText(this,"email and password required",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"email and password required",Toast.LENGTH_LONG).show()
             }
 
 
